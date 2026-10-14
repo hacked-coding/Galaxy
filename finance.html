@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Finance Division | GalaxiStar Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #060b13;
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #10b981;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: #059669;
+            color: #fff;
+            border-color: #10b981;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .country-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+            padding: 25px;
+        }
+
+        .country-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 15px;
+            margin-bottom: 18px;
+        }
+
+        .country-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .exchange-tag {
+            font-size: 0.8rem;
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .stock-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stock-row:last-child {
+            border-bottom: none;
+        }
+
+        .stock-name {
+            font-weight: 600;
+            font-size: 0.98rem;
+        }
+
+        .stock-sub {
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        .stock-price {
+            text-align: right;
+            font-weight: 700;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+
+        .up {
+            color: #10b981;
+        }
+
+        .down {
+            color: #ef4444;
+        }
+
+        .change-pill {
+            font-size: 0.8rem;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">✦ GalaxiStar Finance</a>
+        <nav>
+            <a href="index.html">Home Portal</a>
+            <a href="cybersecurity.html">Switch to Cybersecurity &rarr;</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="top-bar">
+            <div>
+                <h1>Global Share Market Terminal</h1>
+                <p style="color: #94a3b8; font-size: 0.95rem;">Live market indices & top stocks for India, USA, and the United Kingdom</p>
+            </div>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="filterMarket('all', this)">All Markets</button>
+                <button class="tab-btn" onclick="filterMarket('india', this)">🇮🇳 India</button>
+                <button class="tab-btn" onclick="filterMarket('usa', this)">🇺🇸 USA</button>
+                <button class="tab-btn" onclick="filterMarket('uk', this)">🇬🇧 UK</button>
+            </div>
+        </div>
+
+        <div class="market-grid">
+            <!-- INDIA SHARE MARKET -->
+            <div class="country-card" data-market="india">
+                <div class="country-header">
+                    <span class="country-title">🇮🇳 India Market</span>
+                    <span class="exchange-tag">NSE / BSE (INR ₹)</span>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">NIFTY 50</div>
+                        <div class="stock-sub">NSE Benchmark Index</div>
+                    </div>
+                    <div class="stock-price up" data-base="24850.40">₹24,850.40 <span class="change-pill">+0.68% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">BSE SENSEX</div>
+                        <div class="stock-sub">BSE 30 Index</div>
+                    </div>
+                    <div class="stock-price up" data-base="81420.15">₹81,420.15 <span class="change-pill">+0.54% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">Reliance Industries</div>
+                        <div class="stock-sub">NSE: RELIANCE</div>
+                    </div>
+                    <div class="stock-price up" data-base="2985.60">₹2,985.60 <span class="change-pill">+1.12% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">Tata Consultancy Services</div>
+                        <div class="stock-sub">NSE: TCS</div>
+                    </div>
+                    <div class="stock-price down" data-base="4120.25">₹4,120.25 <span class="change-pill">-0.35% ▼</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">HDFC Bank Ltd</div>
+                        <div class="stock-sub">NSE: HDFCBANK</div>
+                    </div>
+                    <div class="stock-price up" data-base="1742.80">₹1,742.80 <span class="change-pill">+0.89% ▲</span></div>
+                </div>
+            </div>
+
+            <!-- USA SHARE MARKET -->
+            <div class="country-card" data-market="usa">
+                <div class="country-header">
+                    <span class="country-title">🇺🇸 USA Market</span>
+                    <span class="exchange-tag">NYSE / NASDAQ (USD $)</span>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">S&P 500</div>
+                        <div class="stock-sub">US Large Cap Index</div>
+                    </div>
+                    <div class="stock-price up" data-base="5842.50">$5,842.50 <span class="change-pill">+0.74% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">NASDAQ Composite</div>
+                        <div class="stock-sub">Tech Heavy Index</div>
+                    </div>
+                    <div class="stock-price up" data-base="18520.90">$18,520.90 <span class="change-pill">+1.05% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">Dow Jones (DJIA)</div>
+                        <div class="stock-sub">Industrial Average</div>
+                    </div>
+                    <div class="stock-price down" data-base="42910.30">$42,910.30 <span class="change-pill">-0.18% ▼</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">NVIDIA Corporation</div>
+                        <div class="stock-sub">NASDAQ: NVDA</div>
+                    </div>
+                    <div class="stock-price up" data-base="136.40">$136.40 <span class="change-pill">+2.45% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">Apple Inc.</div>
+                        <div class="stock-sub">NASDAQ: AAPL</div>
+                    </div>
+                    <div class="stock-price up" data-base="231.15">$231.15 <span class="change-pill">+0.62% ▲</span></div>
+                </div>
+            </div>
+
+            <!-- UK SHARE MARKET -->
+            <div class="country-card" data-market="uk">
+                <div class="country-header">
+                    <span class="country-title">🇬🇧 UK Market</span>
+                    <span class="exchange-tag">London Stock Exchange (GBP £)</span>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">FTSE 100</div>
+                        <div class="stock-sub">UK Top 100 Index</div>
+                    </div>
+                    <div class="stock-price up" data-base="8315.75">£8,315.75 <span class="change-pill">+0.41% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">FTSE 250</div>
+                        <div class="stock-sub">UK Mid-Cap Index</div>
+                    </div>
+                    <div class="stock-price down" data-base="20940.10">£20,940.10 <span class="change-pill">-0.22% ▼</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">HSBC Holdings</div>
+                        <div class="stock-sub">LSE: HSBA</div>
+                    </div>
+                    <div class="stock-price up" data-base="684.50">£684.50 <span class="change-pill">+0.95% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">AstraZeneca PLC</div>
+                        <div class="stock-sub">LSE: AZN</div>
+                    </div>
+                    <div class="stock-price up" data-base="11920.00">£11,920.00 <span class="change-pill">+0.58% ▲</span></div>
+                </div>
+                <div class="stock-row">
+                    <div>
+                        <div class="stock-name">Shell PLC</div>
+                        <div class="stock-sub">LSE: SHEL</div>
+                    </div>
+                    <div class="stock-price down" data-base="2560.40">£2,560.40 <span class="change-pill">-0.49% ▼</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 GalaxiStar Technology — Global Finance Division
+    </footer>
+
+    <script>
+        // Filter between All, India, USA, and UK
+        function filterMarket(region, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.country-card').forEach(card => {
+                if (region === 'all' || card.dataset.market === region) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Simulate subtle live price ticks every 2.5 seconds
+        setInterval(() => {
+            document.querySelectorAll('.stock-price').forEach(priceEl => {
+                const base = parseFloat(priceEl.getAttribute('data-base'));
+                const symbol = priceEl.innerText.trim().charAt(0);
+                const delta = (Math.random() - 0.48) * (base * 0.002);
+                const newPrice = (base + delta).toFixed(2);
+                const pctChange = (((newPrice - base) / base) * 100 + 0.5).toFixed(2);
+
+                const isUp = pctChange >= 0;
+                priceEl.className = 'stock-price ' + (isUp ? 'up' : 'down');
+                priceEl.innerHTML = `${symbol}${Number(newPrice).toLocaleString('en-IN', {minimumFractionDigits: 2})} <span class="change-pill">${isUp ? '+' : ''}${pctChange}% ${isUp ? '▲' : '▼'}</span>`;
+            });
+        }, 2500);
+    </script>
+
+</body>
+</html>
