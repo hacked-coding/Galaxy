@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Division | GalaxiStar Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #090d16;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            margin: 50px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .tool-box {
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        select, input {
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        select {
+            width: 130px;
+        }
+
+        input {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        input:focus, select:focus {
+            border-color: #38bdf8;
+        }
+
+        button {
+            padding: 14px 28px;
+            background: #0284c7;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #0369a1;
+        }
+
+        .status-msg {
+            display: none;
+            color: #38bdf8;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+
+        .result-card {
+            display: none;
+            margin-top: 25px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-left: 4px solid #38bdf8;
+            border-radius: 10px;
+            padding: 25px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: #111827;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .info-value {
+            color: #f8fafc;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">✦ GalaxiStar Cyber</a>
+        <nav>
+            <a href="index.html">Home Portal</a>
+            <a href="finance.html">Switch to Finance &rarr;</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="tool-box">
+            <span class="badge">TELECOM RECONNAISSANCE TOOL</span>
+            <h1>Mobile Number Intelligence Lookup</h1>
+            <p class="subtitle">Enter a 10-digit mobile number to inspect the registered subscriber name, telecom operator, circle/state, and last active tower zone.</p>
+
+            <div class="search-bar">
+                <select id="countryCode">
+                    <option value="+91">🇮🇳 +91 (IN)</option>
+                    <option value="+1">🇺🇸 +1 (US)</option>
+                    <option value="+44">🇬🇧 +44 (UK)</option>
+                </select>
+                <input type="text" id="phoneInput" placeholder="Enter 10-digit mobile number (e.g. 9876543210)" maxlength="10">
+                <button onclick="lookupNumber()">Scan Number</button>
+            </div>
+
+            <div id="statusMsg" class="status-msg">Querying HLR & Telecom Subscriber Gateway...</div>
+
+            <div id="resultCard" class="result-card">
+                <div class="result-header">
+                    <div>
+                        <div style="color: #94a3b8; font-size: 0.85rem;">TARGET MSISDN</div>
+                        <div id="resPhone" style="font-size: 1.3rem; font-weight: 700; color: #38bdf8;">+91 9876543210</div>
+                    </div>
+                    <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">● ACTIVE LINE</span>
+                </div>
+
+                <div class="result-grid">
+                    <div class="info-item">
+                        <div class="info-label">Registered Member Name</div>
+                        <div class="info-value" id="resName">—</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Telecom Operator</div>
+                        <div class="info-value" id="resOperator">—</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Telecom Circle & State</div>
+                        <div class="info-value" id="resCircle">—</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Last Activation Location</div>
+                        <div class="info-value" id="resLocation">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="disclaimer">
+                * <strong>System Note:</strong> This interface demonstrates telecom metadata lookup. To fetch live carrier/circle data in production, connect an API key from a provider like Numverify or AbstractAPI inside the <code>lookupNumber()</code> function.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 GalaxiStar Technology — Cybersecurity Division
+    </footer>
+
+    <script>
+        function lookupNumber() {
+            const code = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phoneInput').value.trim();
+            const statusMsg = document.getElementById('statusMsg');
+            const resultCard = document.getElementById('resultCard');
+
+            // Validate 10-digit number
+            if (!/^\d{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit mobile number (numbers only).");
+                return;
+            }
+
+            resultCard.style.display = 'none';
+            statusMsg.style.display = 'block';
+
+            setTimeout(() => {
+                statusMsg.style.display = 'none';
+
+                // Deterministic hash from the phone number so the same number always gives consistent demo details
+                let hash = 0;
+                for (let i = 0; i < phone.length; i++) {
+                    hash = phone.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                hash = Math.abs(hash);
+
+                const names = [
+                    "Aarav Sharma", "Rohan Verma", "Priya Nair", "Vikramaditya Singh",
+                    "Ananya Patel", "Siddharth Joshi", "Neha Gupta", "Karan Malhotra",
+                    "Rahul Deshmukh", "Pooja Tiwari"
+                ];
+
+                const operators = [
+                    "Reliance Jio Infocomm",
+                    "Bharti Airtel Ltd",
+                    "Vodafone Idea (Vi)",
+                    "BSNL Mobile"
+                ];
+
+                const circles = [
+                    { circle: "Madhya Pradesh & Chhattisgarh", locations: ["Bhopal Sector-4 Tower", "Indore Vijay Nagar Hub", "Jabalpur Civil Lines", "Gwalior City Center"] },
+                    { circle: "Delhi NCR Metro", locations: ["Connaught Place Central", "Noida Sector-62", "Gurugram CyberHub", "Dwarka Sector-21"] },
+                    { circle: "Mumbai Metro", locations: ["Andheri East MIDC", "Bandra Kurla Complex", "Powai Lake Hub", "Nariman Point"] },
+                    { circle: "Karnataka", locations: ["Bengaluru Whitefield", "Electronic City Phase 1", "Mysuru Central", "Indiranagar 100ft Rd"] },
+                    { circle: "Maharashtra & Goa", locations: ["Pune Hinjewadi Phase 2", "Nagpur Sitabuldi", "Nashik City Center", "Panaji North"] },
+                    { circle: "Gujarat", locations: ["Ahmedabad SG Highway", "Surat Ring Road", "Vadodara Alkapuri", "Gandhinagar Infocity"] }
+                ];
+
+                const selectedName = names[hash % names.length];
+                const selectedOperator = operators[hash % operators.length];
+                const selectedCircleObj = circles[hash % circles.length];
+                const selectedLocation = selectedCircleObj.locations[hash % selectedCircleObj.locations.length];
+
+                document.getElementById('resPhone').innerText = `${code} ${phone}`;
+                document.getElementById('resName').innerText = selectedName;
+                document.getElementById('resOperator').innerText = selectedOperator;
+                document.getElementById('resCircle').innerText = selectedCircleObj.circle;
+                document.getElementById('resLocation').innerText = selectedLocation;
+
+                resultCard.style.display = 'block';
+            }, 600);
+        }
+    </script>
+
+</body>
+</html>
